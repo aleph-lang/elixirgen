@@ -88,7 +88,7 @@ fn gen(ast: at, indent: i64) -> String {
             format!("{}{}", c_indent, call)
         },
         at::Stmts{expr1, expr2} => format!("{}{}\n{}", c_indent, gen(*expr1, indent), gen(*expr2, indent)),
-        at::Iprt{name} => format!("{}import {}", c_indent, name),
+        at::Iprt{name, ..} => format!("{}import {}", c_indent, name),
         at::Clss{..} => String::new(),
         at::Return{value} => gen(*value, indent),
         at::Comment{value} => format!("{}#{}", c_indent, value),
